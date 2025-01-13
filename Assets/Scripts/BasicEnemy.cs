@@ -11,18 +11,28 @@ public class BasicEnemy : EnemyManager
     // Start is called before the first frame update
     void Start()
     {
-        
+          //    Initial direction
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(-1f * speed * Time.deltaTime, 0);
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        // 1 de 6 probabiiidad de disparar
         // Fire
         if (Time.time >= fireRate)
         {
-            Instantiate(enemyBullet, FirePoint.position, FirePoint.rotation);
+
+            if (Random.Range(0, 6) == 1)
+            {
+                Instantiate(enemyBullet, FirePoint.position, Quaternion.identity);
+            }
             fireRate = Time.time + 1f;
+         
         }
+
     }
 }

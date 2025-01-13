@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 500f;
+    public float speed = 50f;
         private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(0, speed * Time.deltaTime);
+        rb.velocity = new Vector2(0, speed);
 
     }
     void OnBecameInvisible()

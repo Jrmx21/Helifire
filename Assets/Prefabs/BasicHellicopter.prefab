@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b359db28cf46341b41d03cded84a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 500
+  speed: 50
   enemyBullet: {fileID: 5684112520146490012, guid: 927b7a15bcdce244094f1bfc1754958d, type: 3}
   FirePoint: {fileID: 1794461842778800923}
   fireRate: 2
