@@ -31,7 +31,8 @@ public class BasicEnemy : EnemyManager
                 Instantiate(enemyBullet, FirePoint.position, Quaternion.identity);
             }
             fireRate = Time.time + 1f;
-         
+            // alternador de pararse mientras dispara y moverse
+          
         }
 
     }
