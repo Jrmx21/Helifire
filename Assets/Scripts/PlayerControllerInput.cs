@@ -5,9 +5,13 @@ using UnityEngine;
 public class PlayerControllerInput : MonoBehaviour
 {
     private Animator animator;
+    public GameObject bulletPrefab;
     [SerializeField] private float speed = 5f;
     [SerializeField] private enum State { Idle, Moving, Attacking, Dead };
     [SerializeField] private State state = State.Idle;
+
+    public Transform FirePoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +22,11 @@ public class PlayerControllerInput : MonoBehaviour
 
     void Update()
     {
+        // DISPARO JUGADOR
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
+        }
         // MOVIMIENTO JUGADOR
         if (Input.GetKey(KeyCode.W))
         {

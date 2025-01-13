@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ParallaxController : MonoBehaviour
 {
-    [SerializeField] private Vector2 velocidadFondo = new Vector2(0.007f, 0);
-    [SerializeField] private Vector2 velocidadNubes = new Vector2(0.003f, 0);
-    [SerializeField] private Vector2 velocidadMar = new Vector2(0.001f, 0);
+    [SerializeField] private Vector2 velocidadFondo = new Vector2(7f, 0);
+    [SerializeField] private Vector2 velocidadNubes = new Vector2(3f, 0);
+    [SerializeField] private Vector2 velocidadMar = new Vector2(1f, 0);
     // ke?
 
 
@@ -40,7 +40,6 @@ public class ParallaxController : MonoBehaviour
         {
             return;
         }
-        Debug.Log(offset);
         material.mainTextureOffset += offset *Time.deltaTime *Vector2.right;
         if (material == null)
         {
