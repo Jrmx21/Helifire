@@ -26,6 +26,7 @@ public class PlayerControllerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
+            
         }
         // MOVIMIENTO JUGADOR
         if (Input.GetKey(KeyCode.W))

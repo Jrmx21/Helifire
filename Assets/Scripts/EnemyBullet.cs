@@ -20,8 +20,8 @@ public class EnemyBullet : MonoBehaviour
     }
     void OnBecameInvisible()
     {
-        Destroy(this);
-        Debug.Log("Bullet Destroyed");
+        Destroy(gameObject);
+
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -30,7 +30,8 @@ public class EnemyBullet : MonoBehaviour
         {
             Animator playerAnimator = other.GetComponent<Animator>();
             playerAnimator.Play("DestroyAnimation");
-  
+            Destroy(other.gameObject, 0.5f);
+            Destroy(this.gameObject);
         }
     }
 }

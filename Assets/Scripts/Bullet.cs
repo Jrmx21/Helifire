@@ -20,15 +20,18 @@ public class Bullet : MonoBehaviour
     }
     void OnBecameInvisible()
     {
-        Destroy(this);
+        // Destruir la bala cuando salga de la pantalla
+        Destroy(gameObject);
     }
    void OnTriggerEnter2D(Collider2D other)
    {
     
          if (other.gameObject.tag == "Enemy")
          {
-              Destroy(other.gameObject);
-              Destroy(this.gameObject);
+              Animator enemyAnimator = other.GetComponent<Animator>();
+            enemyAnimator.Play("DestroyAnimation");
+            Destroy(other.gameObject, 0.5f);
+            Destroy(this.gameObject);
          }
    }
 }

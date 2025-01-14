@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -8,10 +9,14 @@ public class EnemyManager : MonoBehaviour
     protected Rigidbody2D rb;
     [SerializeField] protected float speed = 5f;
 
+    protected float timer;
+    protected bool destroyFlag = false;
+    protected bool destroy = false;
+
     // Start is called before the first frame update
     void Start()
     {
-      
+
 
     }
 
@@ -19,5 +24,10 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
 
+
+    }
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }
