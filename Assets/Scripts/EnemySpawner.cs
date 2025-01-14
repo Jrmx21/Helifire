@@ -6,7 +6,8 @@ public class EnemySpawner : MonoBehaviour
 {
     // SPAWNER DE ENEMIGOS en 8,4 a 8,1
     [SerializeField] private GameObject basicEnemy;
-    [SerializeField] private float spawnRate = 5f;
+    [SerializeField] private GameObject quickEnemy;
+    [SerializeField] private float spawnRate = 1f;
     private int dado;
     private float nextSpawn = 0f;
     // Start is called before the first frame update
@@ -27,6 +28,10 @@ public class EnemySpawner : MonoBehaviour
             if (dado == 1)
             {
                 Instantiate(basicEnemy, new Vector2(8, Random.Range(1, 5)), Quaternion.identity);
+            }
+            else if (dado == 2)
+            {
+                Instantiate(quickEnemy, new Vector2(8, 4.62f), Quaternion.identity);
             }
             
             nextSpawn = Time.time + spawnRate;

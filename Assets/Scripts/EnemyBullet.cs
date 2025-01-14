@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-     public float speed = 500f;
-        private Rigidbody2D rb;
+    public float speed = 500f;
+    private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +23,14 @@ public class EnemyBullet : MonoBehaviour
         Destroy(this);
         Debug.Log("Bullet Destroyed");
     }
-   void OnTriggerEnter2D(Collider2D other)
-   {
-    
-         if (other.gameObject.tag == "Player")
-         {
-              Destroy(other.gameObject);
-              Destroy(this.gameObject);
-         }
-   }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.gameObject.tag == "Player")
+        {
+            Animator playerAnimator = other.GetComponent<Animator>();
+            playerAnimator.Play("DestroyAnimation");
+  
+        }
+    }
 }
