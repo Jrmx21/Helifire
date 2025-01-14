@@ -30,6 +30,8 @@ public class EnemyBullet : MonoBehaviour
         {
             Animator playerAnimator = other.GetComponent<Animator>();
             playerAnimator.Play("DestroyAnimation");
+            // Resta heart
+            
             Destroy(other.gameObject, 0.5f);
             Destroy(this.gameObject);
         }

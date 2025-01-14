@@ -10,6 +10,7 @@ public class PlayerControllerInput : MonoBehaviour
     [SerializeField] private enum State { Idle, Moving, Attacking, Dead };
     [SerializeField] private State state = State.Idle;
 
+    public int lifePlayer=100;
     public Transform FirePoint;
 
     // Start is called before the first frame update
@@ -20,13 +21,13 @@ public class PlayerControllerInput : MonoBehaviour
 
     // Update is called once per frame
 
+
     void Update()
     {
         // DISPARO JUGADOR
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
-            
         }
         // MOVIMIENTO JUGADOR
         if (Input.GetKey(KeyCode.W))
@@ -34,32 +35,32 @@ public class PlayerControllerInput : MonoBehaviour
 
             transform.position = new Vector2(transform.position.x, transform.position.y + speed * Time.deltaTime);
         }
-         if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
             transform.position = new Vector2(transform.position.x, transform.position.y - speed * Time.deltaTime);
         }
-         if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
         }
-         if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
         }
         // LIMITACIONES MAPA
-        if (transform.position.y>-1)
+        if (transform.position.y > -1)
         {
             transform.position = new Vector2(transform.position.x, -1);
         }
-        if (transform.position.y<-4.86f)
+        if (transform.position.y < -4.86f)
         {
             transform.position = new Vector2(transform.position.x, -4.86f);
         }
-        if (transform.position.x<-7.37f)
+        if (transform.position.x < -7.37f)
         {
             transform.position = new Vector2(-7.37f, transform.position.y);
         }
-        if (transform.position.x>7.37f)
+        if (transform.position.x > 7.37f)
         {
             transform.position = new Vector2(7.37f, transform.position.y);
         }
