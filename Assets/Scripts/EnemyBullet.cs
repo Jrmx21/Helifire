@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     public float speed = 500f;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -28,12 +30,11 @@ public class EnemyBullet : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
-            Animator playerAnimator = other.GetComponent<Animator>();
-            playerAnimator.Play("DestroyAnimation");
-            // Resta heart
-            
-            Destroy(other.gameObject, 0.5f);
+          
             Destroy(this.gameObject);
+            gameManager.sustractHealth(1);
+            
+            
         }
     }
 }
