@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject basicEnemy;
     [SerializeField] private GameObject quickEnemy;
     [SerializeField] private GameObject stealthEnemy; // Nuevo tipo de enemigo
+    [SerializeField] private GameObject shieldEnemy;
     [SerializeField] private float spawnRate = 1f;
     private int dado;
     private float nextSpawn = 0f;
@@ -31,6 +32,9 @@ public class EnemySpawner : MonoBehaviour
                     break;
                 case 3:
                     Instantiate(stealthEnemy, new Vector2(8, 2.5f), Quaternion.identity); 
+                    break;
+                case 4:
+                    Instantiate(shieldEnemy, spawnPosition, Quaternion.identity);
                     break;
             }
 
