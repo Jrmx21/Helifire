@@ -4,41 +4,37 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    // SPAWNER DE ENEMIGOS en 8,4 a 8,1
     [SerializeField] private GameObject basicEnemy;
     [SerializeField] private GameObject quickEnemy;
+    [SerializeField] private GameObject stealthEnemy; // Nuevo tipo de enemigo
     [SerializeField] private float spawnRate = 1f;
     private int dado;
     private float nextSpawn = 0f;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
         // SPAWNEAR ENEMIGOS
         if (Time.time >= nextSpawn)
         {
-            dado = Random.Range(0, 3);
+            dado = Random.Range(0, 4); // Incluye posibilidad de 3 tipos de enemigos
             Debug.Log(dado);
-            
-            if (dado == 1)
+
+            Vector2 spawnPosition = new Vector2(8, Random.Range(1f, 5f)); // Rango de aparición
+
+            switch (dado)
             {
-                Instantiate(basicEnemy, new Vector2(8, Random.Range(1, 5)), Quaternion.identity);
+                case 1:
+                    Instantiate(basicEnemy, spawnPosition, Quaternion.identity);
+                    break;
+                case 2:
+                    Instantiate(quickEnemy, spawnPosition, Quaternion.identity);
+                    break;
+                case 3:
+                    Instantiate(stealthEnemy, new Vector2(8, 2.5f), Quaternion.identity); 
+                    break;
             }
-            else if (dado == 2)
-            {
-                Instantiate(quickEnemy, new Vector2(8, 4.62f), Quaternion.identity);
-            }
-            
+
             nextSpawn = Time.time + spawnRate;
-            
         }
     }
-
-
-
 }

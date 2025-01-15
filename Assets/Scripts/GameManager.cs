@@ -6,20 +6,31 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] public GameObject player;
     private int health = 3;
+    private bool isInvulnerable = false;
+    private SpriteRenderer playerSprite;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        playerSprite = player.GetComponent<SpriteRenderer>();
     }
 
-    // resta vida metodo
+    // Método para restar vida
     public void sustractHealth(int damage)
     {
-        health -= damage;
-        Debug.Log("Vidas: " + health);
+        if (!isInvulnerable)
+        {
+            health -= damage;
+            Debug.Log("Vidas: " + health);
+
+            if (health > 0)
+            {
+                StartCoroutine(InvulnerabilityCoroutine());
+            }
+        }
     }
 
-    // getter y setter 
+    // Getter y setter
     public int getHealth()
     {
         return health;
@@ -28,6 +39,25 @@ public class GameManager : MonoBehaviour
     public void setHealth(int health)
     {
         this.health = health;
+    }
+
+    // Corrutina para invulnerabilidad y parpadeo
+    private IEnumerator InvulnerabilityCoroutine()
+    {
+        isInvulnerable = true;
+        float elapsedTime = 0f;
+        bool isVisible = true;
+
+        while (elapsedTime < 2f)
+        {
+            isVisible = !isVisible;
+            playerSprite.enabled = isVisible; // Alternar visibilidad
+            elapsedTime += 0.1f;
+            yield return new WaitForSeconds(0.1f); // Tiempo entre parpadeos
+        }
+
+        playerSprite.enabled = true; // Asegurar que sea visible al final
+        isInvulnerable = false;
     }
 
     // Update is called once per frame
@@ -40,6 +70,5 @@ public class GameManager : MonoBehaviour
             Destroy(player, 0.5f);
             health = -1;
         }
-
     }
 }
