@@ -9,6 +9,7 @@ TagManager:
   - Heart
   - Poison
   - MultiShot
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

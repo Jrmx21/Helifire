@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     private int health = 3;
 
     [SerializeField] private TextMeshProUGUI finalScoreText;
+    [SerializeField] private Button finalScoreButton;
 
     private bool isInvulnerable = false;
 
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviour
             if (score > PlayerPrefs.GetInt("HighScore", 0))
             {
                 PlayerPrefs.SetInt("HighScore", score);
+                finalScoreText.color = Color.yellow;
+                // SONIDO DE VICTORIA
             }
         }
         else
@@ -39,6 +43,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         playerSprite = player.GetComponent<SpriteRenderer>();
+
     }
 
     public int getScore()
@@ -132,6 +137,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // YOU LOSE --------- game over
         if (health == 0)
         {
             Animator playerAnimator = player.GetComponent<Animator>();
@@ -141,7 +147,8 @@ public class GameManager : MonoBehaviour
             health = -1;
             updateHighScore();
             finalScoreText.gameObject.SetActive(true);
-            Time.timeScale = 0;
+
+            finalScoreButton.gameObject.SetActive(true);
         }
     }
 }

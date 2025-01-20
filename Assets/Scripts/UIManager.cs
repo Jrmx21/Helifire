@@ -1,5 +1,8 @@
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +11,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI timer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +23,11 @@ public class UIManager : MonoBehaviour
     {
         scoreText.text = "Score: " + gameManager.getScore();
         timer.text = "Time: " + gameManager.getTime();
+    }
+
+    public void restartGameButton()
+    {
+        // load "PlayScene" scene Again
+        SceneManager.LoadScene("PlayScene");
     }
 }
