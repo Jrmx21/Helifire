@@ -18,7 +18,7 @@ public class StealthEnemy : EnemyManager
         initialY = transform.position.y;
 
         // Movimiento inicial hacia la izquierda
-        rb.velocity = new Vector2(-speed * Time.deltaTime, 0);
+        rb.velocity = new Vector2(-speed , 0);
     }
 
     void Update()
@@ -34,7 +34,7 @@ public class StealthEnemy : EnemyManager
     private void HandleMovement()
     {
         // Movimiento horizontal hacia la izquierda
-        rb.velocity = new Vector2(-speed * Time.deltaTime, rb.velocity.y);
+        rb.velocity = new Vector2(-speed , rb.velocity.y);
 
         // Movimiento vertical oscilatorio
         float newY = initialY + Mathf.Sin(Time.time * verticalSpeed) * verticalAmplitude;

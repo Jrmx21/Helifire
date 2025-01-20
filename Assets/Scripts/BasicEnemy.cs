@@ -13,7 +13,7 @@ public class BasicEnemy : EnemyManager
     {
           //    Initial direction
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(-1f * speed * Time.deltaTime, 0);
+        rb.velocity = new Vector2(-1f * speed, 0);
 
 
     }

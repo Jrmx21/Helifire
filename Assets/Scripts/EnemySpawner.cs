@@ -1,41 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject basicEnemy;
     [SerializeField] private GameObject quickEnemy;
-    [SerializeField] private GameObject stealthEnemy; // Nuevo tipo de enemigo
-    [SerializeField] private GameObject shieldEnemy;
+    [SerializeField] private GameObject stealthEnemy;
     [SerializeField] private float spawnRate = 1f;
-    private int dado;
+    [SerializeField] private int baseEnemyCount = 1; // Cantidad base de enemigos por ciclo
+    [SerializeField] private int maxEnemyCount = 7; // Límite máximo de enemigos por ciclo
+    [SerializeField] private float difficultyIncreaseRate = 20f; // Tiempo entre incrementos de dificultad (en segundos)
+
     private float nextSpawn = 0f;
+    private float nextDifficultyIncrease = 0f;
+    private int currentEnemyCount; // Cantidad actual de enemigos por ciclo
+
+    void Start()
+    {
+        currentEnemyCount = baseEnemyCount; // Inicializamos con el valor base
+        nextDifficultyIncrease = Time.time + difficultyIncreaseRate;
+    }
 
     void Update()
     {
-        // SPAWNEAR ENEMIGOS
+        // Incrementar la dificultad a intervalos
+        if (Time.time >= nextDifficultyIncrease && currentEnemyCount < maxEnemyCount)
+        {
+            currentEnemyCount++;
+            nextDifficultyIncrease = Time.time + difficultyIncreaseRate;
+        }
+
+        // Generar enemigos
         if (Time.time >= nextSpawn)
         {
-            dado = Random.Range(0, 4); // Incluye posibilidad de 3 tipos de enemigos
- 
-
-            Vector2 spawnPosition = new Vector2(8, Random.Range(1f, 5f)); // Rango de aparición
-
-            switch (dado)
+            for (int i = 0; i < currentEnemyCount; i++)
             {
-                case 1:
+                Vector2 spawnPosition = new Vector2(8, Random.Range(1f, 5f)); // Rango de aparición
+
+                int randomValue = Random.Range(1, 101); // Probabilidad ponderada de aparición
+
+                if (randomValue <= 60)
+                {
                     Instantiate(basicEnemy, spawnPosition, Quaternion.identity);
-                    break;
-                case 2:
+                }
+                else if (randomValue <= 85)
+                {
+                    Instantiate(stealthEnemy, spawnPosition, Quaternion.identity);
+                }
+                else
+                {
                     Instantiate(quickEnemy, spawnPosition, Quaternion.identity);
-                    break;
-                case 3:
-                    Instantiate(stealthEnemy, new Vector2(8, 2.5f), Quaternion.identity); 
-                    break;
-                case 4:
-                    Instantiate(shieldEnemy, spawnPosition, Quaternion.identity);
-                    break;
+                }
             }
 
             nextSpawn = Time.time + spawnRate;

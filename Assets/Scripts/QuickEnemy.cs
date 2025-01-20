@@ -15,10 +15,10 @@ public class QuickEnemy : EnemyManager
     void Start()
     {
         anim=GetComponent<Animation>();
-        speed = 400f;
+        speed = 4f;
           //    Initial direction
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(-1f * speed * Time.deltaTime, 0);
+        rb.velocity = new Vector2(-1f * speed, 0);
         
 
     }

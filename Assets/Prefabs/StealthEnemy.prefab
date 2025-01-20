@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9f938d2dbc45a4ba7a7a256ec63014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 300
+  speed: 3
   verticalAmplitude: 2
   verticalSpeed: 2
   enemyBullet: {fileID: 5684112520146490012, guid: 927b7a15bcdce244094f1bfc1754958d, type: 3}

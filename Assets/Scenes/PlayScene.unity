@@ -348,6 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desctructionSound: {fileID: 8300000, guid: e7ecb449b09d83b449969e0d8a51271f, type: 3}
+  hurtSound: {fileID: 8300000, guid: a10ee74285a87684b8fcb9a7ec7643f0, type: 3}
   player: {fileID: 1069962577}
 --- !u!1 &519420028
 GameObject:
@@ -607,7 +608,7 @@ Transform:
   m_GameObject: {fileID: 1069962577}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.73, y: -1.75, z: 0}
+  m_LocalPosition: {x: -0.08, y: -2.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1150,7 +1151,6 @@ MonoBehaviour:
   basicEnemy: {fileID: 7523904893309184272, guid: be10d40474a4b42408f239af6e40218c, type: 3}
   quickEnemy: {fileID: 7494482248769789175, guid: 9e77d0769120adc4790cb3c5576acf5b, type: 3}
   stealthEnemy: {fileID: 6184324968658831123, guid: 96efc93b6a1e7374aa18739faf3f4bdf, type: 3}
-  shieldEnemy: {fileID: 0}
   spawnRate: 2
 --- !u!4 &2031242062
 Transform:
