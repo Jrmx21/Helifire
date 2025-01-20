@@ -29,7 +29,7 @@ public class Torpedo : MonoBehaviour
         explodeCoord = Random.Range(1f, 4.7f);
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        
+
     }
 
     // Update is called once per frame
@@ -41,10 +41,13 @@ public class Torpedo : MonoBehaviour
         {
             rb.velocity = new Vector2(-speed * 2, 0);
 
-            animation.Play("Torpedo");
+
 
             if (!isTorpedoPlayed)
             {
+                // -180 degree
+                animation.Play("Torpedo");
+                rb.rotation = -180;
                 isTorpedoPlayed = true;
                 AudioSource.PlayClipAtPoint(torpedoSound, transform.position);
             }
@@ -65,7 +68,7 @@ public class Torpedo : MonoBehaviour
         {
 
             Destroy(this.gameObject);
-            gameManager.sustractHealth(1);
+            gameManager.subtractHealth(1);
 
 
         }

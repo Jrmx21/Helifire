@@ -44,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
                 }
                 else if (randomValue <= 85)
                 {
-                    Instantiate(stealthEnemy, spawnPosition, Quaternion.identity);
+                    Instantiate(stealthEnemy, new Vector2(8, 2.4f), Quaternion.identity);
                 }
                 else
                 {

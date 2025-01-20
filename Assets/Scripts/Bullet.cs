@@ -8,35 +8,39 @@ public class Bullet : MonoBehaviour
     public AudioClip desctructionSound;
     public AudioClip shootSound;
     public float speed = 50f;
-        private Rigidbody2D rb;
-    // Start is called before the first frame update
+    private Rigidbody2D rb;
+
     void Start()
     {
         AudioSource.PlayClipAtPoint(shootSound, transform.position);
         rb = GetComponent<Rigidbody2D>();
+
+        
+        // Establecer la velocidad inicial en la dirección de la rotación
+        rb.velocity = transform.up * speed;
+        transform.Rotate(0, 0, 90);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(0, speed);
-
+        // No necesitas modificar la velocidad aquí si ya la configuraste en Start()
     }
+
     void OnBecameInvisible()
     {
         // Destruir la bala cuando salga de la pantalla
         Destroy(gameObject);
     }
-   void OnTriggerEnter2D(Collider2D other)
-   {
-    
-         if (other.gameObject.tag == "Enemy")
-         {
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
             Animator enemyAnimator = other.GetComponent<Animator>();
             enemyAnimator.Play("DestroyAnimation");
             Destroy(other.gameObject, 0.5f);
             Destroy(this.gameObject);
             AudioSource.PlayClipAtPoint(desctructionSound, transform.position);
-         }
-   }
+        }
+    }
 }

@@ -34,7 +34,7 @@ public class EnemyBullet : MonoBehaviour
         {
 
             Destroy(this.gameObject);
-            gameManager.sustractHealth(1);
+            gameManager.subtractHealth(1);
 
 
         }

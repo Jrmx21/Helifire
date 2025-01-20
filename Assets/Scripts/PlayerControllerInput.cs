@@ -9,25 +9,51 @@ public class PlayerControllerInput : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private enum State { Idle, Moving, Attacking, Dead };
     [SerializeField] private State state = State.Idle;
+    private GameManager gameManager;
 
-    public int lifePlayer=100;
+    public int lifePlayer = 100;
     public Transform FirePoint;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
 
+
+    private void FireMultiShot()
+    {
+        // Bala central (hacia arriba)
+        Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
+
+        // Bala en ángulo hacia la izquierda
+        GameObject leftBullet = Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
+        leftBullet.transform.rotation = FirePoint.rotation * Quaternion.Euler(0, 0, 30); // Rotar 30 grados hacia la izquierda
+
+        // Bala en ángulo hacia la derecha
+        GameObject rightBullet = Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
+        rightBullet.transform.rotation = FirePoint.rotation * Quaternion.Euler(0, 0, -30); // Rotar 30 grados hacia la derecha
+    }
 
     void Update()
     {
         // DISPARO JUGADOR
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
+            if (gameManager.poweredUp)
+            {
+                FireMultiShot();
+
+            }
+            else
+            {
+                Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
+            }
+
         }
         // MOVIMIENTO JUGADOR
         if (Input.GetKey(KeyCode.W))

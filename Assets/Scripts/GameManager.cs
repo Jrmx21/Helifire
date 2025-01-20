@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject player;
     private int health = 3;
     private bool isInvulnerable = false;
+
+    public bool poweredUp = false;
     private SpriteRenderer playerSprite;
 
     // Start is called before the first frame update
@@ -18,10 +20,24 @@ public class GameManager : MonoBehaviour
         playerSprite = player.GetComponent<SpriteRenderer>();
     }
 
-    // Método para restar vida
-    public void sustractHealth(int damage)
+    public void setPoweredUp(bool poweredUp)
     {
-        
+        this.poweredUp = poweredUp;
+
+        if (poweredUp)
+        {
+            StartCoroutine(powerUpDurationCoroutine());
+        }
+    }
+
+    public void AddHealth(int health)
+    {
+        this.health += health;
+    }
+
+    // Método para restar vida
+    public void subtractHealth(int damage)
+    {
         if (!isInvulnerable)
         {
             health -= damage;
@@ -63,6 +79,15 @@ public class GameManager : MonoBehaviour
 
         playerSprite.enabled = true; // Asegurar que sea visible al final
         isInvulnerable = false;
+    }
+
+    // Corrutina para la duración del power-up
+    private IEnumerator powerUpDurationCoroutine()
+    {
+        Debug.Log("Power-up activado");
+        yield return new WaitForSeconds(10f); // Espera 10 segundos
+        poweredUp = false; // Desactiva el power-up
+        Debug.Log("Power-up desactivado");
     }
 
     // Update is called once per frame
