@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,11 +10,30 @@ public class GameManager : MonoBehaviour
     public AudioClip hurtSound;
     [SerializeField] public GameObject player;
     private int health = 3;
+
+    [SerializeField] private TextMeshProUGUI finalScoreText;
+
     private bool isInvulnerable = false;
 
     public bool poweredUp = false;
     private int score = 0;
     private SpriteRenderer playerSprite;
+
+    public void updateHighScore()
+    {
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            if (score > PlayerPrefs.GetInt("HighScore", 0))
+            {
+                PlayerPrefs.SetInt("HighScore", score);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
+        finalScoreText.text = "Score: " + score + "\nHigh Score: " + PlayerPrefs.GetInt("HighScore", 0);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -119,6 +139,9 @@ public class GameManager : MonoBehaviour
             AudioSource.PlayClipAtPoint(desctructionSound, transform.position);
             Destroy(player, 0.5f);
             health = -1;
+            updateHighScore();
+            finalScoreText.gameObject.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }

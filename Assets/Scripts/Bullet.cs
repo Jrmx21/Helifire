@@ -45,5 +45,13 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
             AudioSource.PlayClipAtPoint(desctructionSound, transform.position);
         }
+        if (other.gameObject.tag == "EnemyBullet")
+        {
+             Animator enemyBulletAnimator = other.GetComponent<Animator>();
+            enemyBulletAnimator.Play("DestroyAnimation");
+            Destroy(other.gameObject);
+            Destroy(this.gameObject);
+            AudioSource.PlayClipAtPoint(desctructionSound, transform.position);
+        }
     }
 }
