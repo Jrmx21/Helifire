@@ -176,6 +176,9 @@ MonoBehaviour:
   speed: 2
   explodeCoord: 0
   explodeRange: 0.3
+  shootSound: {fileID: 8300000, guid: c54526717efc28c499965c98e01e6ce2, type: 3}
+  torpedoSound: {fileID: 8300000, guid: 9aec76f29dbb919418ba5910b47344ac, type: 3}
+  isTorpedoPlayed: 0
 --- !u!95 &8139294203765329858
 Animator:
   serializedVersion: 5

@@ -6,11 +6,13 @@ public class Bullet : MonoBehaviour
 {
     // sound effect
     public AudioClip desctructionSound;
+    public AudioClip shootSound;
     public float speed = 50f;
         private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
+        AudioSource.PlayClipAtPoint(shootSound, transform.position);
         rb = GetComponent<Rigidbody2D>();
     }
 

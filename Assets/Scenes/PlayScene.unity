@@ -347,6 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3eba76a17aef14a800aa88cd6a0dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  desctructionSound: {fileID: 8300000, guid: e7ecb449b09d83b449969e0d8a51271f, type: 3}
   player: {fileID: 1069962577}
 --- !u!1 &519420028
 GameObject:

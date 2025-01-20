@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desctructionSound: {fileID: 8300000, guid: 69eee6b4459cbb54596d7471c14ce112, type: 3}
+  shootSound: {fileID: 8300000, guid: b3ae4caa121e966469015b30ce82a486, type: 3}
   speed: 10
 --- !u!61 &-8675585587484468859
 BoxCollider2D:

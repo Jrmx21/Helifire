@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     // audio
     public AudioClip desctructionSound;
+    public AudioClip hurtSound;
     [SerializeField] public GameObject player;
     private int health = 3;
     private bool isInvulnerable = false;
@@ -20,10 +21,12 @@ public class GameManager : MonoBehaviour
     // Método para restar vida
     public void sustractHealth(int damage)
     {
+        
         if (!isInvulnerable)
         {
             health -= damage;
             Debug.Log("Vidas: " + health);
+            AudioSource.PlayClipAtPoint(hurtSound, transform.position);
 
             if (health > 0)
             {

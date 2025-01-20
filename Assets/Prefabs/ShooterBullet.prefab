@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   speed: 5
+  shootSound: {fileID: 8300000, guid: c54526717efc28c499965c98e01e6ce2, type: 3}
 --- !u!50 &1030883704797257506
 Rigidbody2D:
   serializedVersion: 4

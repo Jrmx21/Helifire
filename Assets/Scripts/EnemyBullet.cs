@@ -6,10 +6,12 @@ public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     public float speed = 5f;
+    public AudioClip shootSound;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
+        AudioSource.PlayClipAtPoint(shootSound, transform.position);
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
@@ -30,11 +32,11 @@ public class EnemyBullet : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
-          
+
             Destroy(this.gameObject);
             gameManager.sustractHealth(1);
-            
-            
+
+
         }
     }
 }
