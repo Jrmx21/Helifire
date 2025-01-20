@@ -7,15 +7,17 @@ public class Bullet : MonoBehaviour
     // sound effect
     public AudioClip desctructionSound;
     public AudioClip shootSound;
+    private GameManager gameManager;
     public float speed = 50f;
     private Rigidbody2D rb;
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         AudioSource.PlayClipAtPoint(shootSound, transform.position);
         rb = GetComponent<Rigidbody2D>();
 
-        
+
         // Establecer la velocidad inicial en la dirección de la rotación
         rb.velocity = transform.up * speed;
         transform.Rotate(0, 0, 90);
@@ -36,6 +38,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
+            gameManager.addScore(5);
             Animator enemyAnimator = other.GetComponent<Animator>();
             enemyAnimator.Play("DestroyAnimation");
             Destroy(other.gameObject, 0.5f);

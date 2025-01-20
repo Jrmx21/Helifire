@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
 {
     // RIGIDbODY
     protected Rigidbody2D rb;
+    private GameManager gameManager;
     [SerializeField] protected float speed = 5f;
 
     protected float timer;
@@ -16,8 +17,7 @@ public class EnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame

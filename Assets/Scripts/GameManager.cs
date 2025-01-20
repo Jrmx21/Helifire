@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private bool isInvulnerable = false;
 
     public bool poweredUp = false;
+    private int score = 0;
     private SpriteRenderer playerSprite;
 
     // Start is called before the first frame update
@@ -20,6 +21,24 @@ public class GameManager : MonoBehaviour
         playerSprite = player.GetComponent<SpriteRenderer>();
     }
 
+    public int getScore()
+    {
+        return score;
+    }
+    public void addScore(int score)
+    {
+        this.score += score;
+
+    }
+    public void substractScore(int score)
+    {
+        this.score -= score;
+    }
+
+    public int getTime()
+    {
+        return (int)Time.time;
+    }
     public void setPoweredUp(bool poweredUp)
     {
         this.poweredUp = poweredUp;
