@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    // sound effect
+    public AudioClip desctructionSound;
     public float speed = 50f;
         private Rigidbody2D rb;
     // Start is called before the first frame update
@@ -28,10 +30,11 @@ public class Bullet : MonoBehaviour
     
          if (other.gameObject.tag == "Enemy")
          {
-              Animator enemyAnimator = other.GetComponent<Animator>();
+            Animator enemyAnimator = other.GetComponent<Animator>();
             enemyAnimator.Play("DestroyAnimation");
             Destroy(other.gameObject, 0.5f);
             Destroy(this.gameObject);
+            AudioSource.PlayClipAtPoint(desctructionSound, transform.position);
          }
    }
 }

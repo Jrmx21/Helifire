@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
         if (Time.time >= nextSpawn)
         {
             dado = Random.Range(0, 4); // Incluye posibilidad de 3 tipos de enemigos
-            Debug.Log(dado);
+ 
 
             Vector2 spawnPosition = new Vector2(8, Random.Range(1f, 5f)); // Rango de aparición
 

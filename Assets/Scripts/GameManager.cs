@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // audio
+    public AudioClip desctructionSound;
     [SerializeField] public GameObject player;
     private int health = 3;
     private bool isInvulnerable = false;
@@ -67,6 +69,7 @@ public class GameManager : MonoBehaviour
         {
             Animator playerAnimator = player.GetComponent<Animator>();
             playerAnimator.Play("DestroyAnimation");
+            AudioSource.PlayClipAtPoint(desctructionSound, transform.position);
             Destroy(player, 0.5f);
             health = -1;
         }

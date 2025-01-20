@@ -2,23 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class Torpedo : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
-    public float speed = 5f;
+    // Cambia direccion de 1 a 4,7 
+    public float speed = 2f;
+    public float explodeCoord;
+    [SerializeField] private float explodeRange = 0.5f;
+    private Animator animation;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
+
         rb = GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(0, -speed);
+        animation = GetComponent<Animator>();
+
+
+        // dado de 1 a 4,7
+        explodeCoord = Random.Range(1f, 4.7f);
+
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(0, -speed);
+    
 
+        if (transform.position.y <= -explodeCoord)
+        {
+            rb.velocity = new Vector2(-speed * 2, 0);
+
+            animation.Play("Torpedo");
+    
+
+        }
     }
     void OnBecameInvisible()
     {
@@ -30,11 +50,11 @@ public class EnemyBullet : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
-          
+
             Destroy(this.gameObject);
             gameManager.sustractHealth(1);
-            
-            
+
+
         }
     }
 }
