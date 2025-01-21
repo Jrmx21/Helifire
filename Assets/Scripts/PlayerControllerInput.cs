@@ -81,11 +81,11 @@ public class PlayerControllerInput : MonoBehaviour
         {
             transform.position = new Vector2(transform.position.x, -4.86f);
         }
-        if (transform.position.x < -7.37f)
+        if (transform.position.x < -6.4f)
         {
             transform.position = new Vector2(-6.4f, transform.position.y);
         }
-        if (transform.position.x > 7.37f)
+        if (transform.position.x > 6.4f)
         {
             transform.position = new Vector2(6.4f, transform.position.y);
         }
