@@ -6,7 +6,12 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    // Temporizador
+    private int elapsedTime = 0; // Tiempo transcurrido
+    private bool isTimerRunning = false; // Estado del temporizador
+
     // audio
+
     public AudioClip desctructionSound;
     public AudioClip hurtSound;
     [SerializeField] public GameObject player;
@@ -16,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button finalScoreButton;
 
     private bool isInvulnerable = false;
+
 
     public bool poweredUp = false;
     private int score = 0;
@@ -36,12 +42,14 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", score);
         }
-        finalScoreText.text = "Score: " + score + "\nHigh Score: " + PlayerPrefs.GetInt("HighScore", 0);
+        finalScoreText.text = "Score: " + score + "\nHigh Score: " + PlayerPrefs.GetInt("HighScore", 0)+ "\nTime: " + getTime()+"''";
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        // Inicializar el temporizador para que ejecute cada 1 segundo
+        startTimer();
         playerSprite = player.GetComponent<SpriteRenderer>();
 
     }
@@ -60,9 +68,36 @@ public class GameManager : MonoBehaviour
         this.score -= score;
     }
 
+    // Método para iniciar el temporizador
+    public void startTimer()
+    {
+        if (!isTimerRunning)
+        {
+            isTimerRunning = true;
+            StartCoroutine(TimerCoroutine());
+        }
+    }
+
+    // Corrutina que aumenta el tiempo cada segundo
+    private IEnumerator TimerCoroutine()
+    {
+        while (isTimerRunning)
+        {
+            yield return new WaitForSeconds(1f); // Espera 1 segundo
+            elapsedTime++; // Aumenta el tiempo transcurrido
+        }
+    }
+
+    // Método para obtener el tiempo transcurrido
     public int getTime()
     {
-        return (int)Time.time;
+        return elapsedTime;
+    }
+
+    // Método para detener el temporizador
+    public void stopTimer()
+    {
+        isTimerRunning = false;
     }
     public void setPoweredUp(bool poweredUp)
     {
@@ -146,9 +181,11 @@ public class GameManager : MonoBehaviour
             Destroy(player, 0.5f);
             health = -1;
             updateHighScore();
+            stopTimer();
             finalScoreText.gameObject.SetActive(true);
 
             finalScoreButton.gameObject.SetActive(true);
+            
         }
     }
 }
