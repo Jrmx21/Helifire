@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  speed: 2
+  speed: 1.75
   explodeCoord: 0
   explodeRange: 0.3
   shootSound: {fileID: 8300000, guid: c54526717efc28c499965c98e01e6ce2, type: 3}

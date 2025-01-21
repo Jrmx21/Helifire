@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject stealthEnemy;
     [SerializeField] private float spawnRate = 1f;
     [SerializeField] private int baseEnemyCount = 1; // Cantidad base de enemigos por ciclo
-    [SerializeField] private int maxEnemyCount = 7; // Límite máximo de enemigos por ciclo
+    [SerializeField] private int maxEnemyCount = 3; // Límite máximo de enemigos por ciclo
     [SerializeField] private float difficultyIncreaseRate = 20f; // Tiempo entre incrementos de dificultad (en segundos)
 
     private float nextSpawn = 0f;

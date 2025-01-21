@@ -1875,7 +1875,7 @@ MonoBehaviour:
   stealthEnemy: {fileID: 6184324968658831123, guid: 96efc93b6a1e7374aa18739faf3f4bdf, type: 3}
   spawnRate: 2
   baseEnemyCount: 1
-  maxEnemyCount: 7
+  maxEnemyCount: 3
   difficultyIncreaseRate: 20
 --- !u!4 &2031242062
 Transform:
@@ -1939,7 +1939,7 @@ MonoBehaviour:
   multiShotPowerUp: {fileID: 3760602353156985978, guid: 585f1df9f186a1b43ae7bca06f5c1ab1, type: 3}
   heartPowerUp: {fileID: 5239969681107715638, guid: 86fcc30d0597d6f43836dab77951ef87, type: 3}
   poisonPowerUp: {fileID: 212133484595400394, guid: e774b0146f7332f41a55cde7a5aa11dd, type: 3}
-  spawnInterval: 20
+  spawnInterval: 10
   spawnAreaMin: {x: -6, y: 6}
   spawnAreaMax: {x: 6, y: 6}
 --- !u!1 &2076531628
