@@ -7,8 +7,7 @@ public class PlayerControllerInput : MonoBehaviour
     private Animator animator;
     public GameObject bulletPrefab;
     [SerializeField] private float speed = 5f;
-    [SerializeField] private enum State { Idle, Moving, Attacking, Dead };
-    [SerializeField] private State state = State.Idle;
+
     private GameManager gameManager;
 
     public int lifePlayer = 100;
@@ -84,11 +83,11 @@ public class PlayerControllerInput : MonoBehaviour
         }
         if (transform.position.x < -7.37f)
         {
-            transform.position = new Vector2(-7.37f, transform.position.y);
+            transform.position = new Vector2(-6.4f, transform.position.y);
         }
         if (transform.position.x > 7.37f)
         {
-            transform.position = new Vector2(7.37f, transform.position.y);
+            transform.position = new Vector2(6.4f, transform.position.y);
         }
 
         // ESTADOS JUGADOR
@@ -96,12 +95,10 @@ public class PlayerControllerInput : MonoBehaviour
         // establece estado idle y moving
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            state = State.Moving;
             animator.SetBool("moving", true);
         }
         else
         {
-            state = State.Idle;
             animator.SetBool("moving", false);
         }
     }
