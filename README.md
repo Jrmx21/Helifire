@@ -21,7 +21,9 @@ Aunque no es tan conocido, es considerado una pieza histórica dentro de los vid
 ---
 
 ## 🖼️ Capturas de pantalla
-*Próximamente...* 🖼️🎮
+
+![Hellifire](https://github.com/user-attachments/assets/49fa0287-4509-4089-885b-65d980e883cf)
+
 
 ---
 
