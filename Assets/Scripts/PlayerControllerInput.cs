@@ -55,20 +55,20 @@ public class PlayerControllerInput : MonoBehaviour
 
         }
         // MOVIMIENTO JUGADOR
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
 
             transform.position = new Vector2(transform.position.x, transform.position.y + speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) 
         {
             transform.position = new Vector2(transform.position.x, transform.position.y - speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
         }
