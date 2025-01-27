@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     // audio
 
     public AudioClip desctructionSound;
+    public AudioClip lostPowerUp;
+
     public AudioClip hurtSound;
     [SerializeField] public GameObject player;
     private int health = 3;
@@ -42,7 +44,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", score);
         }
-        finalScoreText.text = "Score: " + score + "\nHigh Score: " + PlayerPrefs.GetInt("HighScore", 0)+ "\nTime: " + getTime()+"''";
+        finalScoreText.text = "Score: " + score + "\nHigh Score: " + PlayerPrefs.GetInt("HighScore", 0) + "\nTime: " + getTime() + "''";
     }
 
     // Start is called before the first frame update
@@ -103,10 +105,13 @@ public class GameManager : MonoBehaviour
     {
         this.poweredUp = poweredUp;
 
+
         if (poweredUp)
         {
             StartCoroutine(powerUpDurationCoroutine());
+          
         }
+     
     }
 
     public void AddHealth(int health)
@@ -166,7 +171,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("Power-up activado");
         yield return new WaitForSeconds(10f); // Espera 10 segundos
         poweredUp = false; // Desactiva el power-up
+
         Debug.Log("Power-up desactivado");
+        AudioSource.PlayClipAtPoint(lostPowerUp, transform.position);
     }
 
     // Update is called once per frame
@@ -185,7 +192,7 @@ public class GameManager : MonoBehaviour
             finalScoreText.gameObject.SetActive(true);
 
             finalScoreButton.gameObject.SetActive(true);
-            
+
         }
     }
 }

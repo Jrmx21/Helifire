@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     private GameManager gameManager;
+    public AudioClip poweredUpSound;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -28,10 +29,12 @@ public class PowerUp : MonoBehaviour
             {
                 Debug.Log("PowerUp MultiShot");
                 gameManager.setPoweredUp(true);
+                AudioSource.PlayClipAtPoint(poweredUpSound, transform.position);
             }
             else if (gameObject.tag == "Heart")
             {
                 gameManager.AddHealth(1);
+                AudioSource.PlayClipAtPoint(poweredUpSound, transform.position);
             }
             else if (gameObject.tag == "Poison")
             {

@@ -8,7 +8,6 @@ public class Torpedo : MonoBehaviour
     // Cambia direccion de 1 a 4,7 
     public float speed = 2f;
     public float explodeCoord;
-    [SerializeField] private float explodeRange = 0.5f;
 
     public AudioClip shootSound;
     public AudioClip torpedoSound;
