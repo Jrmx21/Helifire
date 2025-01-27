@@ -481,6 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desctructionSound: {fileID: 8300000, guid: e7ecb449b09d83b449969e0d8a51271f, type: 3}
+  lostPowerUp: {fileID: 8300000, guid: f8f700fb538d1f94fa4cefe527d09f6a, type: 3}
   hurtSound: {fileID: 8300000, guid: a10ee74285a87684b8fcb9a7ec7643f0, type: 3}
   player: {fileID: 1069962577}
   finalScoreText: {fileID: 1240587922}
