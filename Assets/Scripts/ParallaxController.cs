@@ -7,7 +7,6 @@ public class ParallaxController : MonoBehaviour
     private Vector2 velocidadFondo = new Vector2(-0.03f, 0);
     private Vector2 velocidadNubes = new Vector2(-0.05f, 0);
    private Vector2 velocidadMar = new Vector2(-0.1f, 0);
-    // ke?
 
 
     private Vector2 offset;
