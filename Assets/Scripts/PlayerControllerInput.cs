@@ -8,6 +8,7 @@ public class PlayerControllerInput : MonoBehaviour
     public GameObject bulletPrefab;
     [SerializeField] private float speed = 5f;
 
+    private float limiteHorizontal = 6.4f;
     private GameManager gameManager;
 
     public int lifePlayer = 100;
@@ -81,13 +82,13 @@ public class PlayerControllerInput : MonoBehaviour
         {
             transform.position = new Vector2(transform.position.x, -4.86f);
         }
-        if (transform.position.x < -6.4f)
+        if (transform.position.x < -limiteHorizontal)
         {
-            transform.position = new Vector2(-6.4f, transform.position.y);
+            transform.position = new Vector2(-limiteHorizontal, transform.position.y);
         }
-        if (transform.position.x > 6.4f)
+        if (transform.position.x > limiteHorizontal)
         {
-            transform.position = new Vector2(6.4f, transform.position.y);
+            transform.position = new Vector2(limiteHorizontal, transform.position.y);
         }
 
         // ESTADOS JUGADOR
