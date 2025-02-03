@@ -5,14 +5,19 @@ using UnityEngine;
 public class PlayerControllerInput : MonoBehaviour
 {
     private Animator animator;
-    public GameObject bulletPrefab;
-    [SerializeField] private float speed = 5f;
+    [Header("Shoot")]
 
-    private float limiteHorizontal = 6.4f;
+    [Tooltip("Punto desde el que se dispara el 'bullet'")] public Transform FirePoint;
+    [SerializeField] private GameObject bulletPrefab;
+    [Header("Movement")]
+    [SerializeField][Range(0, 10)][Tooltip("Velocidad del jugador")] private float speed = 5f;
+
+    [Header("Screen Limits")]
+    [SerializeField] [Tooltip("Coordenada límite del jugador horizontal, tanto como + como en -")] private float limiteHorizontal = 6.4f;
+    [SerializeField] [Tooltip("Coordenada límite del jugador vertical inferior")] private float limiteVerticalInferior = -4.86f;
+    [SerializeField]  [Tooltip("Coordenada límite del jugador vertical superior")]private float limiteVerticalSuperior = -1f;
     private GameManager gameManager;
 
-    public int lifePlayer = 100;
-    public Transform FirePoint;
 
     // Start is called before the first frame update
     void Start()
@@ -74,13 +79,13 @@ public class PlayerControllerInput : MonoBehaviour
             transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
         }
         // LIMITACIONES MAPA
-        if (transform.position.y > -1)
+        if (transform.position.y > limiteVerticalSuperior)
         {
-            transform.position = new Vector2(transform.position.x, -1);
+            transform.position = new Vector2(transform.position.x, limiteVerticalSuperior);
         }
-        if (transform.position.y < -4.86f)
+        if (transform.position.y < limiteVerticalInferior)
         {
-            transform.position = new Vector2(transform.position.x, -4.86f);
+            transform.position = new Vector2(transform.position.x, limiteVerticalInferior);
         }
         if (transform.position.x < -limiteHorizontal)
         {

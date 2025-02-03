@@ -12,20 +12,23 @@ public class GameManager : MonoBehaviour
 
     // audio
 
-    public AudioClip desctructionSound;
-    public AudioClip lostPowerUp;
+    [Header("Audio")]
+    [Tooltip("Sonido reproducido al destruir tanto enemigos como el jugador")] public AudioClip destructionSound;
+    [Tooltip("Sonido reproducido al perder la propiedad poweredUp")] public AudioClip lostPowerUp;
 
-    public AudioClip hurtSound;
+    [Tooltip("Sonido reproducido al recibir daño como jugador")] public AudioClip hurtSound;
+
+    [Header("Player")]
     [SerializeField] public GameObject player;
     private int health = 3;
 
+    [Header("UI")]
     [SerializeField] private TextMeshProUGUI finalScoreText;
     [SerializeField] private Button finalScoreButton;
 
     private bool isInvulnerable = false;
 
-
-    public bool poweredUp = false;
+    [HideInInspector] public bool poweredUp = false;
     private int score = 0;
     private SpriteRenderer playerSprite;
 
@@ -109,9 +112,9 @@ public class GameManager : MonoBehaviour
         if (poweredUp)
         {
             StartCoroutine(powerUpDurationCoroutine());
-          
+
         }
-     
+
     }
 
     public void AddHealth(int health)
@@ -184,13 +187,12 @@ public class GameManager : MonoBehaviour
         {
             Animator playerAnimator = player.GetComponent<Animator>();
             playerAnimator.Play("DestroyAnimation");
-            AudioSource.PlayClipAtPoint(desctructionSound, transform.position);
+            AudioSource.PlayClipAtPoint(destructionSound, transform.position);
             Destroy(player, 0.5f);
             health = -1;
             updateHighScore();
             stopTimer();
             finalScoreText.gameObject.SetActive(true);
-
             finalScoreButton.gameObject.SetActive(true);
 
         }

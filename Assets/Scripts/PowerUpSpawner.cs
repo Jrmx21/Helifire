@@ -5,11 +5,13 @@ using UnityEngine;
 public class PowerUpSpawner : MonoBehaviour
 {
     // Prefabs de los power ups
+    [Header("Power Ups")]
     [SerializeField] private GameObject multiShotPowerUp;
     [SerializeField] private GameObject heartPowerUp;
     [SerializeField] private GameObject poisonPowerUp;
 
     // Tiempo entre spawns
+    [Header("Spawning Settings")]
     [SerializeField] private float spawnInterval = 20f;
 
     // Área de spawn
