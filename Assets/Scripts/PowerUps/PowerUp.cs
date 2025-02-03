@@ -5,7 +5,8 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     private GameManager gameManager;
-    public AudioClip poweredUpSound;
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip poweredUpSound;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()

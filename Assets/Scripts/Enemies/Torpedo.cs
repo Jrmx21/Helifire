@@ -5,13 +5,16 @@ using UnityEngine;
 public class Torpedo : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
+    [Header("Torpedo settings")]
     // Cambia direccion de 1 a 4,7 
-    public float speed = 2f;
-    public float explodeCoord;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private  float explodeCoord;
 
-    public AudioClip shootSound;
-    public AudioClip torpedoSound;
-    public bool isTorpedoPlayed = false;
+
+    [SerializeField] private bool isTorpedoPlayed = false;
+    [Header("Audio")]
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip torpedoSound;
     private Animator animation;
     private Rigidbody2D rb;
     // Start is called before the first frame update

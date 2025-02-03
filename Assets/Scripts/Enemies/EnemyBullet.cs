@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
-    public float speed = 5f;
-    public AudioClip shootSound;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private AudioClip shootSound;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()

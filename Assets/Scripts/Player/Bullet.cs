@@ -5,10 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     // sound effect
-    public AudioClip desctructionSound;
-    public AudioClip shootSound;
-    private GameManager gameManager;
-    public float speed = 50f;
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip desctructionSound;
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private GameManager gameManager;
+    [Header("Bullet Configuration")]
+    [SerializeField] private  float speed = 50f;
     private Rigidbody2D rb;
 
     void Start()
@@ -47,12 +49,12 @@ public class Bullet : MonoBehaviour
         }
         if (other.gameObject.tag == "EnemyBullet")
         {
-             Animator enemyBulletAnimator = other.GetComponent<Animator>();
+            Animator enemyBulletAnimator = other.GetComponent<Animator>();
             enemyBulletAnimator.Play("DestroyAnimation");
-             AudioSource.PlayClipAtPoint(desctructionSound, transform.position);
-            Destroy(other.gameObject,0.2f);
+            AudioSource.PlayClipAtPoint(desctructionSound, transform.position);
+            Destroy(other.gameObject, 0.2f);
             Destroy(this.gameObject);
-           
+
         }
     }
 }

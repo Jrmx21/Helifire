@@ -13,13 +13,13 @@ public class GameManager : MonoBehaviour
     // audio
 
     [Header("Audio")]
-    [Tooltip("Sonido reproducido al destruir tanto enemigos como el jugador")] public AudioClip destructionSound;
-    [Tooltip("Sonido reproducido al perder la propiedad poweredUp")] public AudioClip lostPowerUp;
+    [Tooltip("Sonido reproducido al destruir tanto enemigos como el jugador")][SerializeField] private AudioClip destructionSound;
+    [Tooltip("Sonido reproducido al perder la propiedad poweredUp")][SerializeField] private AudioClip lostPowerUp;
 
-    [Tooltip("Sonido reproducido al recibir daño como jugador")] public AudioClip hurtSound;
+    [Tooltip("Sonido reproducido al recibir daño como jugador")][SerializeField] private AudioClip hurtSound;
 
     [Header("Player")]
-    [SerializeField] public GameObject player;
+    [SerializeField] private GameObject player;
     private int health = 3;
 
     [Header("UI")]
@@ -28,10 +28,35 @@ public class GameManager : MonoBehaviour
 
     private bool isInvulnerable = false;
 
-    [HideInInspector] public bool poweredUp = false;
+    [HideInInspector] private bool poweredUp = false;
+
+    // getter and setter 
+    public bool isPoweredUp()
+    {
+        return poweredUp;
+    }
+    
     private int score = 0;
     private SpriteRenderer playerSprite;
 
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Inicializar el temporizador para que ejecute cada 1 segundo
+        startTimer();
+        playerSprite = player.GetComponent<SpriteRenderer>();
+
+    }
+    void Update()
+    {
+        // YOU LOSE --------- game over
+        if (health == 0)
+        {
+            lostGame();
+
+        }
+    }
     public void updateHighScore()
     {
         if (PlayerPrefs.HasKey("HighScore"))
@@ -50,14 +75,7 @@ public class GameManager : MonoBehaviour
         finalScoreText.text = "Score: " + score + "\nHigh Score: " + PlayerPrefs.GetInt("HighScore", 0) + "\nTime: " + getTime() + "''";
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Inicializar el temporizador para que ejecute cada 1 segundo
-        startTimer();
-        playerSprite = player.GetComponent<SpriteRenderer>();
 
-    }
 
     public int getScore()
     {
@@ -169,6 +187,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Corrutina para la duración del power-up
+
     private IEnumerator powerUpDurationCoroutine()
     {
         Debug.Log("Power-up activado");
@@ -179,22 +198,18 @@ public class GameManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(lostPowerUp, transform.position);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // YOU LOSE --------- game over
-        if (health == 0)
-        {
-            Animator playerAnimator = player.GetComponent<Animator>();
-            playerAnimator.Play("DestroyAnimation");
-            AudioSource.PlayClipAtPoint(destructionSound, transform.position);
-            Destroy(player, 0.5f);
-            health = -1;
-            updateHighScore();
-            stopTimer();
-            finalScoreText.gameObject.SetActive(true);
-            finalScoreButton.gameObject.SetActive(true);
 
-        }
+    [ContextMenu("Lost Game")]
+    private void lostGame()
+    {
+        Animator playerAnimator = player.GetComponent<Animator>();
+        playerAnimator.Play("DestroyAnimation");
+        AudioSource.PlayClipAtPoint(destructionSound, transform.position);
+        Destroy(player, 0.5f);
+        health = -1;
+        updateHighScore();
+        stopTimer();
+        finalScoreText.gameObject.SetActive(true);
+        finalScoreButton.gameObject.SetActive(true);
     }
 }

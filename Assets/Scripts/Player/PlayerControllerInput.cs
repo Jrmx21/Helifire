@@ -2,20 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerControllerInput : MonoBehaviour
 {
     private Animator animator;
     [Header("Shoot")]
 
-    [Tooltip("Punto desde el que se dispara el 'bullet'")] public Transform FirePoint;
+    [Tooltip("Punto desde el que se dispara el 'bullet'")][SerializeField] private Transform FirePoint;
     [SerializeField] private GameObject bulletPrefab;
     [Header("Movement")]
     [SerializeField][Range(0, 10)][Tooltip("Velocidad del jugador")] private float speed = 5f;
 
     [Header("Screen Limits")]
-    [SerializeField] [Tooltip("Coordenada límite del jugador horizontal, tanto como + como en -")] private float limiteHorizontal = 6.4f;
-    [SerializeField] [Tooltip("Coordenada límite del jugador vertical inferior")] private float limiteVerticalInferior = -4.86f;
-    [SerializeField]  [Tooltip("Coordenada límite del jugador vertical superior")]private float limiteVerticalSuperior = -1f;
+    [SerializeField][Tooltip("Coordenada límite del jugador horizontal, tanto como + como en -")] private float limiteHorizontal = 6.4f;
+    [SerializeField][Tooltip("Coordenada límite del jugador vertical inferior")] private float limiteVerticalInferior = -4.86f;
+    [SerializeField][Tooltip("Coordenada límite del jugador vertical superior")] private float limiteVerticalSuperior = -1f;
     private GameManager gameManager;
 
 
@@ -49,7 +50,7 @@ public class PlayerControllerInput : MonoBehaviour
         // DISPARO JUGADOR
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (gameManager.poweredUp)
+            if (gameManager.isPoweredUp())
             {
                 FireMultiShot();
 

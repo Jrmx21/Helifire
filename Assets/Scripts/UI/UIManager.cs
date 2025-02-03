@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     private GameManager gameManager;
     // text score
 
+    [Header("UI Components")]
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI timer;
 
