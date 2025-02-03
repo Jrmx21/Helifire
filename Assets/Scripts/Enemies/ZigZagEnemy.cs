@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class StealthEnemy : EnemyManager
+public class ZigZagEnemy : EnemyClass
 {
     [Header("ZigZag Movement settings")]
     [SerializeField] private float verticalAmplitude = 2f; // Amplitud del movimiento vertical

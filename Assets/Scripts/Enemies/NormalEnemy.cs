@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemy : EnemyManager
+public class NormalEnemy : EnemyClass
 {
     // enemy bullet
     [Header("Shooting Settings")]

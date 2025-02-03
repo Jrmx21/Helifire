@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class PlayerControllerInput : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Animator animator;
     [Header("Shoot")]

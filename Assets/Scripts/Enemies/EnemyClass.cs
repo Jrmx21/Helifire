@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyClass : MonoBehaviour
 {
     // RIGIDbODY
     protected Rigidbody2D rb;
