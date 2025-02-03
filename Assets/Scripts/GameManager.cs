@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] private GameObject player;
-    private int health = 3;
+    [SerializeField][Range(0, 3)] private int health = 3;
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI finalScoreText;
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     {
         return poweredUp;
     }
-    
+
     private int score = 0;
     private SpriteRenderer playerSprite;
 

@@ -12,7 +12,7 @@ public class PowerUp : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(0, -1);
+        rb.velocity = new Vector2(0, -2);
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 

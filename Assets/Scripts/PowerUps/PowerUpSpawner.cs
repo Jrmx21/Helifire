@@ -12,7 +12,7 @@ public class PowerUpSpawner : MonoBehaviour
 
     // Tiempo entre spawns
     [Header("Spawning Settings")]
-    [SerializeField] private float spawnInterval = 20f;
+    [SerializeField][Range(0,50)] private float spawnInterval = 20f;
 
     // Área de spawn
     [SerializeField] private Vector2 spawnAreaMin=new Vector2(-6, 6);

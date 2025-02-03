@@ -7,10 +7,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject quickEnemy;
     [SerializeField] private GameObject stealthEnemy;
     [Header("Spawning Settings")]
-    [SerializeField] private float spawnRate = 1f;
-    [SerializeField] [Tooltip("Cantidad base de enemigos por ciclo")] private int baseEnemyCount = 1;
-    [SerializeField][Tooltip("Límite máximo de enemigos por ciclo")] private int maxEnemyCount = 3;
-    [SerializeField][Tooltip("Tiempo entre incrementos de dificultad (en segundos)")] private float difficultyIncreaseRate = 20f;
+
+    [SerializeField][Range(0, 5)] private float spawnRate = 1f;
+    [SerializeField][Range(0, 30)][Tooltip("Cantidad base de enemigos por ciclo")] private int baseEnemyCount = 1;
+    [SerializeField][Min(1)][Tooltip("Límite máximo de enemigos por ciclo")] private int maxEnemyCount = 3;
+    [SerializeField][Range(0f, 40f)][Tooltip("Tiempo entre incrementos de dificultad (en segundos)")] private float difficultyIncreaseRate = 20f;
 
     private float nextSpawn = 0f;
     private float nextDifficultyIncrease = 0f;

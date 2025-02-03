@@ -15,7 +15,7 @@ public class Torpedo : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioClip shootSound;
     [SerializeField] private AudioClip torpedoSound;
-    private Animator animation;
+    private Animator animator;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class Torpedo : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, -speed);
-        animation = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         AudioSource.PlayClipAtPoint(shootSound, transform.position);
 
         // dado de 1 a 4,7
@@ -48,7 +48,7 @@ public class Torpedo : MonoBehaviour
             if (!isTorpedoPlayed)
             {
                 // -180 degree
-                animation.Play("Torpedo");
+                animator.Play("Torpedo");
                 rb.rotation = -180;
                 isTorpedoPlayed = true;
                 AudioSource.PlayClipAtPoint(torpedoSound, transform.position);

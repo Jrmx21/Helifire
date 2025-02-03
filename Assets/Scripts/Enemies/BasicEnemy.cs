@@ -5,7 +5,7 @@ using UnityEngine;
 public class BasicEnemy : EnemyManager
 {
     // enemy bullet
-    [Header("Enemy Bullet")]
+    [Header("Shooting Settings")]
     [SerializeField] private GameObject enemyBullet;
     [SerializeField] private Transform FirePoint;
     [SerializeField] private float fireRate = 2f;

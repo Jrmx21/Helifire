@@ -4,28 +4,29 @@ using UnityEngine;
 
 public class QuickEnemy : EnemyManager
 {
-       // enemy bullet
+    // enemy bullet
+    [Header("Shooting Settings")]
     [SerializeField] private GameObject enemyBullet;
     [SerializeField] private Transform FirePoint;
     [SerializeField] private float fireRate = 2f;
-    
+
     private Animation anim;
     // Start is called before the first frame update
-    
+
     void Start()
     {
-        anim=GetComponent<Animation>();
+        anim = GetComponent<Animation>();
         speed = 4f;
-          //    Initial direction
+        //    Initial direction
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(-1f * speed, 0);
-        
+
 
     }
 
     public void animDeath()
     {
-       anim.Play("DestroyAnimation");
+        anim.Play("DestroyAnimation");
     }
 
     // Update is called once per frame
@@ -42,9 +43,9 @@ public class QuickEnemy : EnemyManager
             }
             fireRate = Time.time + 1f;
             // alternador de pararse mientras dispara y moverse
-          
+
         }
 
     }
-    
+
 }

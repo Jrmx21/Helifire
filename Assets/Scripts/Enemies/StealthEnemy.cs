@@ -2,11 +2,15 @@ using System.Collections;
 using UnityEngine;
 
 public class StealthEnemy : EnemyManager
-{[SerializeField] private float verticalAmplitude = 2f; // Amplitud del movimiento vertical
+{
+    [Header("ZigZag Movement settings")]
+    [SerializeField] private float verticalAmplitude = 2f; // Amplitud del movimiento vertical
     [SerializeField] private float verticalSpeed = 2f;     // Velocidad del movimiento vertical
+    [Header("Shooting settings")]
     [SerializeField] private GameObject enemyBullet;       // Prefab de las balas
     [SerializeField] private Transform firePoint;          // Punto desde el que dispara
     [SerializeField] private float fireRate = 3f;          // Frecuencia de disparo
+
     private Animator animator;                             // Referencia al componente Animator
     private float nextFire = 0f;                           // Tiempo para el próximo disparo
     private float initialY;                                // Posición inicial en Y
@@ -18,7 +22,7 @@ public class StealthEnemy : EnemyManager
         initialY = transform.position.y;
 
         // Movimiento inicial hacia la izquierda
-        rb.velocity = new Vector2(-speed , 0);
+        rb.velocity = new Vector2(-speed, 0);
     }
 
     void Update()
@@ -34,7 +38,7 @@ public class StealthEnemy : EnemyManager
     private void HandleMovement()
     {
         // Movimiento horizontal hacia la izquierda
-        rb.velocity = new Vector2(-speed , rb.velocity.y);
+        rb.velocity = new Vector2(-speed, rb.velocity.y);
 
         // Movimiento vertical oscilatorio
         float newY = initialY + Mathf.Sin(Time.time * verticalSpeed) * verticalAmplitude;
